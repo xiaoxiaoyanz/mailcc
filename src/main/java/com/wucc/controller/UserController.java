@@ -35,12 +35,16 @@ public class UserController {
     public User selectOne(String id) {
         return userService.queryById(id);
     }
-
+/*
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
         return "/user/login";
-    }
+    }*/
 
+    @RequestMapping({"","/","/index"})
+    public String index() {
+        return "index";
+    }
 
 
 }
