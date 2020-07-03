@@ -27,6 +27,11 @@ public class User implements Serializable {
     */
     private String email;
 
+    /**
+     * 性别
+     */
+    private String sex;
+
 
     public String getId() {
         return id;
@@ -60,6 +65,14 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -67,6 +80,7 @@ public class User implements Serializable {
                 ", name='" + name + '\'' +
                 ", pssword='" + pssword + '\'' +
                 ", email='" + email + '\'' +
+                ", sex='" + sex + '\'' +
                 '}';
     }
 }

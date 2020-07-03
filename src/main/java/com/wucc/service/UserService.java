@@ -1,8 +1,13 @@
 package com.wucc.service;
 
 import com.wucc.entity.User;
+import com.wucc.pub.util.MailException;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -53,5 +58,20 @@ public interface UserService {
      * @return 是否成功
      */
     boolean deleteById(String id);
+
+    /**
+     * 登录
+     * @param req
+     * @param resp
+     * @throws UnsupportedEncodingException
+     */
+    String login(HttpServletRequest req, HttpServletResponse resp) throws Exception;
+
+    /**
+     * 注册
+     * @param req
+     * @param resp
+     */
+    void register(HttpServletRequest req, HttpServletResponse resp) throws IOException, MailException;
 
 }

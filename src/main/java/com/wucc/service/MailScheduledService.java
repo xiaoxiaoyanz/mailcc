@@ -77,7 +77,7 @@ public class MailScheduledService {
 		message.setSubject("测试邮件");
 		//创建消息主体
 		MimeBodyPart messageBodyPart = new MimeBodyPart();
-		messageBodyPart.setText("老王，每隔5分钟给你发个邮件");
+		messageBodyPart.setText("每隔5分钟发个邮件");
 		// 创建多重消息
 		Multipart multipart=new MimeMultipart();
 		multipart.addBodyPart(messageBodyPart);
