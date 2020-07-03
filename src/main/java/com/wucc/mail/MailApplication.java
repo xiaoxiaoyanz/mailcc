@@ -13,7 +13,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @ComponentScan(basePackages = {"com.wucc"})
 @MapperScan({"com.wucc.dao"})
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 public class MailApplication {
 
 	public static void main(String[] args) {

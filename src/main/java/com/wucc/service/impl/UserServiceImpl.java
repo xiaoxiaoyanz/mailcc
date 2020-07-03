@@ -139,11 +139,11 @@ public class UserServiceImpl implements UserService {
         //这里只加了简单的判断，判断帐号是否填写，以及两次密码是否一致
         //判断信息是否填写
         if(userName==null||password==null||repassword==null||sex==null||email == null){
-            throw new MailException("所有的数据都不能为空，请重新<a href = '/day02'>填写</a>");
+            throw new MailException("所有的数据都不能为空，请重新填写");
         }
         //判断两次密码是否一致
         if(!password.equals(repassword)){
-            throw new MailException("两次密码输入不一致，请重新<a href = '/day02'>填写</a>");
+            throw new MailException("两次密码输入不一致，请重新填写");
 
         }
         //判断验证码输入是否正确

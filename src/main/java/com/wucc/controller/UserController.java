@@ -50,6 +50,7 @@ public class UserController {
 
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @ResponseBody
     public Object login(HttpServletRequest req, HttpServletResponse resp){
         String errorMsg = "";
         try{
@@ -61,10 +62,11 @@ public class UserController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @ResponseBody
     public void register(HttpServletRequest req, HttpServletResponse resp){
         String errorMsg = "";
         try{
-            userService.login(req,resp);
+            userService.register(req,resp);
         }catch (MailException e){
             errorMsg = "注册失败！" + e.getMessage();
         }catch (Exception e){
