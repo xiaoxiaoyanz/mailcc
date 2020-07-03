@@ -7,6 +7,8 @@ import com.wucc.pub.util.ResponseUtil;
 import com.wucc.pub.util.Status;
 import com.wucc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -19,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author makejava
  * @since 2020-07-01 12:10:19
  */
-@RestController
+@Controller
 @RequestMapping(value = "/user")
 public class UserController {
     /**
@@ -39,6 +41,13 @@ public class UserController {
     public User selectOne(String id) {
         return userService.queryById(id);
     }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login() {
+        return "/user/login";
+    }
+
+
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Object login(HttpServletRequest req, HttpServletResponse resp){

@@ -12,6 +12,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 //@EnableScheduling //开启基于注解的定时任务
 @ComponentScan(basePackages = {"com.wucc"})
 @MapperScan({"com.wucc.dao"})
+@SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 public class MailApplication {
 
