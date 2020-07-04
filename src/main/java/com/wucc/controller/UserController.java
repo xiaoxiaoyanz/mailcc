@@ -46,5 +46,10 @@ public class UserController {
         return "index";
     }
 
+    @RequestMapping(value = "/category", method = RequestMethod.GET)
+    public String category() {
+        return "post/category";
+    }
+
 
 }
