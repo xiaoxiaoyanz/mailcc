@@ -72,7 +72,7 @@ public class MailScheduledService {
 		// 设置发送者
 		message.setFrom(new InternetAddress(env.getProperty("spring.mail.username")));
 		// 设置发送方式与接收者
-		message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress("1055141339@qq.com"));
+		message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress("1764582906@qq.com"));
 		// 设置主题
 		message.setSubject("测试邮件");
 		//创建消息主体
