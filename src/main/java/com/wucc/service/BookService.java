@@ -9,13 +9,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class BookService {
 
-    @RabbitListener(queues = "atguigu.news")
+    //@RabbitListener(queues = "wuccqueue.news")
     public void receive(Book book){
         System.out.println("收到消息："+book);
     }
 
-    @RabbitListener(queues = "atguigu")
+    //@RabbitListener(queues = "wuccqueue.news")
     public void receive02(Message message){
+        System.out.println("收到消息:");
         System.out.println(message.getBody());
         System.out.println(message.getMessageProperties());
     }

@@ -51,18 +51,20 @@ public class AmqpApplicationTests {
 
 		//object默认当成消息体，只需要传入要发送的对象，自动序列化发送给rabbitmq；
 		//rabbitTemplate.convertAndSend(exchage,routeKey,object);
-		Map<String,Object> map = new HashMap<>();
-		map.put("msg","这是第一个消息");
-		map.put("data", Arrays.asList("helloworld",123,true));
+		/*Map<String,Object> map = new HashMap<>();
+		map.put("msg","老王，这是第一个消息");
+		map.put("data", Arrays.asList("老王涵涵",666,true));*/
+		String laowang = "hahaaha";
 		//对象被默认序列化以后发送出去
-		rabbitTemplate.convertAndSend("exchange.direct","atguigu.news",new Book("西游记","吴承恩"));
+		//rabbitTemplate.convertAndSend("wuccqueue.direct","wuccqueue.news",new Book("西游记","吴承恩"));
+		rabbitTemplate.convertAndSend("wucc.direct","wuccqueue.news",laowang);
 
 	}
 
 	//接受数据,如何将数据自动的转为json发送出去
 	@Test
 	public void receive(){
-		Object o = rabbitTemplate.receiveAndConvert("atguigu.news");
+		Object o = rabbitTemplate.receiveAndConvert("wuccqueue.news");
 		System.out.println(o.getClass());
 		System.out.println(o);
 	}
@@ -73,7 +75,7 @@ public class AmqpApplicationTests {
 	@Test
 	public void sendMsg(){
 
-		rabbitTemplate.convertAndSend("exchange.fanout","",new Book("红楼梦","曹雪芹"));
+		rabbitTemplate.convertAndSend("wucc.fanout","",new Book("红楼梦","曹雪芹"));
 	}
 
 }
