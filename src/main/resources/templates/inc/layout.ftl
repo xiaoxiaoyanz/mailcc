@@ -2,15 +2,30 @@
     <!DOCTYPE html>
     <html>
     <head>
-        <meta charset="utf-8">
+      <#--  <meta charset="utf-8">
         <title>${title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="keywords" content="fly,layui,前端社区">
         <meta name="description" content="Fly社区是模块化前端UI框架Layui的官网社区，致力于为web开发提供强劲动力">
         <link rel="stylesheet" href="../res/layui/css/layui.css">
-        <link rel="stylesheet" href="../res/css/global.css">
+        <link rel="stylesheet" href="../res/css/global.css">-->
+        <meta charset="utf-8">
+        <title>${title}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="keywords" content="欢迎关注公众号：MarkerHub">
+        <meta name="description" content="更多开源项目可以关注公众号：MarkerHub">
+        <link rel="stylesheet" href="/res/layui/css/layui.css">
+        <link rel="stylesheet" href="/res/css/global.css">
+
+        <script src="/res/layui/layui.js"></script>
+        <script src="/res/js/jquery.min.js"></script>
+        <script src="/res/js/sockjs.js"></script>
+        <script src="/res/js/stomp.js"></script>
+        <script src="/res/js/im.js"></script>
+        <script src="/res/js/chat.js"></script>
     </head>
     <body>
+    <#include "/inc/common.ftl" />
     <#include "/inc/header.ftl"/>
 
     <#nested />

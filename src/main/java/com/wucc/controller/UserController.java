@@ -42,15 +42,7 @@ public class UserController {
         return "/user/login";
     }*/
 
-    @RequestMapping({"","/","/index"})
-    public String index() {
-        return "index";
-    }
 
-    @RequestMapping(value = "/category", method = RequestMethod.GET)
-    public String category() {
-        return "post/category";
-    }
 
 
 }

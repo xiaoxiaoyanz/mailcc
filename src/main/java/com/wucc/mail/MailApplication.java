@@ -11,7 +11,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 //@EnableAsync  //开启异步注解功能
 //@EnableScheduling //开启基于注解的定时任务
 @ComponentScan(basePackages = {"com.wucc"})
-@MapperScan({"com.wucc.dao"})
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
 public class MailApplication {
 
