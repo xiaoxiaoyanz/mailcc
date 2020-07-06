@@ -22,7 +22,7 @@
                 <a class="iconfont icon-touxiang layui-hide-xs" href="user/login.html"></a>
             </li>
             <li class="layui-nav-item">
-                <a href="user/login.html">登入</a>
+                <a href="user/login.ftl">登入</a>
             </li>
             <li class="layui-nav-item">
                 <a href="user/reg.html">注册</a>

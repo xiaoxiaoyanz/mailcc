@@ -4,7 +4,7 @@ import com.wucc.entity.Message;
 import com.wucc.entity.User;
 import com.wucc.service.MessageService;
 import com.wucc.service.UserService;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.Environment;

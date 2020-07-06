@@ -39,6 +39,7 @@ public class UserController {
     //@GetMapping("/selectOne")
     @RequestMapping(value = "/selectOne", method = RequestMethod.GET)
     public User selectOne(String id) {
+        System.out.println("cc");
         return userService.queryById(id);
     }
 /*
@@ -47,10 +48,7 @@ public class UserController {
         return "/user/login";
     }*/
 
-    @RequestMapping({"","/","/index"})
-    public String index() {
-        return "index";
-    }
+
 
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
