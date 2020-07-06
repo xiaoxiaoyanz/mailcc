@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wucc.dao.MessageDao">
+
+    <resultMap type="com.wucc.entity.Message" id="MessageMap">
+        <result property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <result property="messageSubject" column="message_subject" jdbcType="VARCHAR"/>
+        <result property="messageContext" column="message_context" jdbcType="VARCHAR"/>
+        <result property="messageFrom" column="message_from" jdbcType="VARCHAR"/>
+        <result property="messageTo" column="message_to" jdbcType="VARCHAR"/>
+        <result property="createtime" column="createtime" jdbcType="TIMESTAMP"/>
+        <result property="isSend" column="is_send" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="MessageMap">
+        select
+          id, user_id, message_subject, message_context, message_from, message_to, createtime, is_send
+        from message
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="MessageMap">
+        select
+          id, user_id, message_subject, message_context, message_from, message_to, createtime, is_send
+        from mail.message
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="MessageMap">
+        select
+          id, user_id, message_subject, message_context, message_from, message_to, createtime, is_send
+        from mail.message
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="userId != null and userId != ''">
+                and user_id = #{userId}
+            </if>
+            <if test="messageSubject != null and messageSubject != ''">
+                and message_subject = #{messageSubject}
+            </if>
+            <if test="messageContext != null">
+                and message_context = #{messageContext}
+            </if>
+            <if test="messageFrom != null and messageFrom != ''">
+                and message_from = #{messageFrom}
+            </if>
+            <if test="messageTo != null and messageTo != ''">
+                and message_to = #{messageTo}
+            </if>
+            <if test="createtime != null">
+                and createtime = #{createtime}
+            </if>
+            <if test="isSend != null and isSend != ''">
+                and is_send = #{isSend}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into mail.message(user_id, message_subject, message_context, message_from, message_to, createtime, is_send)
+        values (#{userId}, #{messageSubject}, #{messageContext}, #{messageFrom}, #{messageTo}, #{createtime}, #{isSend})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update mail.message
+        <set>
+            <if test="userId != null and userId != ''">
+                user_id = #{userId},
+            </if>
+            <if test="messageSubject != null and messageSubject != ''">
+                message_subject = #{messageSubject},
+            </if>
+            <if test="messageContext != null">
+                message_context = #{messageContext},
+            </if>
+            <if test="messageFrom != null and messageFrom != ''">
+                message_from = #{messageFrom},
+            </if>
+            <if test="messageTo != null and messageTo != ''">
+                message_to = #{messageTo},
+            </if>
+            <if test="createtime != null">
+                createtime = #{createtime},
+            </if>
+            <if test="isSend != null and isSend != ''">
+                is_send = #{isSend},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from mail.message where id = #{id}
+    </delete>
+
+</mapper>
