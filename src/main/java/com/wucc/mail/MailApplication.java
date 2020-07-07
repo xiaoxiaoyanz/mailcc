@@ -1,6 +1,7 @@
 package com.wucc.mail;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
@@ -10,6 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 //@EnableAsync  //开启异步注解功能
 //@EnableScheduling //开启基于注解的定时任务
+@EnableRabbit
 @ComponentScan(basePackages = {"com.wucc"})
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
 public class MailApplication {
