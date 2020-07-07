@@ -152,20 +152,23 @@ public class UserServiceImpl implements UserService {
             resp.getWriter().write("验证码输入错误");
             return;
         }*/
-        try {
-            User user = new User();
-            user.setName(userName);
-            user.setPssword(password);
-            user.setEmail(email);
-            user.setSex(sex);
-            int i = userDao.insert(user);
-            //添加成功上边这个执行器就会返回1
-            if(i==1){
-                throw new MailException("注册成功!");
-            }else{
-                throw new MailException("注册失败，请重新编辑!");
-            }
-        }catch (Exception e){
+
+        User user = new User();
+        user.setName(userName);
+        List<User> list = userDao.queryAll(user);
+        if (!CollectionUtils.isEmpty(list)) {
+            throw new MailException("用户名已存在！");
         }
+        user.setPssword(password);
+        user.setEmail(email);
+        user.setSex(sex);
+        int i = userDao.insert(user);
+        //添加成功上边这个执行器就会返回1
+        if (i == 1) {
+            //throw new MailException("注册成功!");
+        } else {
+            throw new MailException("注册失败，请重新编辑!");
+        }
+
     }
 }

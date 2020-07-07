@@ -65,7 +65,7 @@ public class UserController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
-    public void register(HttpServletRequest req, HttpServletResponse resp){
+    public Response register(HttpServletRequest req, HttpServletResponse resp){
         String errorMsg = "";
         try{
             userService.register(req,resp);
@@ -74,6 +74,7 @@ public class UserController {
         }catch (Exception e){
             errorMsg = "注册失败，服务端异常！" + e.getMessage();
         }
+        return ResponseUtil.buildResponse(errorMsg,Status.fail,null);
     }
 
 }
