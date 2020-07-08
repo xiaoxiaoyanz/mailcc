@@ -7,6 +7,7 @@ import com.wucc.entity.MPost;
 import com.wucc.mapper.MPostMapper;
 import com.wucc.service.MPostService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.wucc.utils.RedisUtil;
 import com.wucc.vo.PostVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,8 @@ public class MPostServiceImpl extends ServiceImpl<MPostMapper, MPost> implements
 
 	@Autowired
 	MPostMapper mPostMapper;
+	@Autowired
+	RedisUtil redisUtil;
 
 	@Override
 	public void initWeekRank() {
@@ -46,5 +49,31 @@ public class MPostServiceImpl extends ServiceImpl<MPostMapper, MPost> implements
 				.orderByDesc(order != null, order);
 
 		return mPostMapper.selectPosts(page, wrapper);
+	}
+
+	@Override
+	public PostVo selectOnePost(QueryWrapper<MPost> wrapper) {
+		return mPostMapper.selectOnePost(wrapper);
+	}
+
+	@Override
+	public void putViewCount(PostVo vo) {
+
+		String key = "rank:post:" + vo.getId();
+
+
+		// 1、从缓存中获取viewcount
+		Integer viewCount = (Integer) redisUtil.hget(key, "post:viewCount");
+
+		// 2、如果没有，就先从实体里面获取，再加一
+		if(viewCount != null) {
+			vo.setViewCount(viewCount + 1);
+		} else {
+			vo.setViewCount(vo.getViewCount() + 1);
+		}
+
+		// 3、同步到缓存里面
+		redisUtil.hset(key, "post:viewCount", vo.getViewCount());
+
 	}
 }

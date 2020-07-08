@@ -20,4 +20,9 @@ public class BookService {
         System.out.println(message.getBody());
         System.out.println(message.getMessageProperties());
     }
+
+    //@RabbitListener(queues = "QUEUE_A")
+    public void receive03(String str){
+        System.out.println("收到消息："+str.toString());
+    }
 }
