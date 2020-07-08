@@ -49,7 +49,7 @@ public class RabbitController {
      * 广播模式
      * @return
      */
-    @ResponseBody
+    /*@ResponseBody
     @RequestMapping("/sendMsgAll")
     public String sendMsgAll(){
         int msgNum = 10;
@@ -57,5 +57,5 @@ public class RabbitController {
             msgProducer.sendAll("这是发送的第"+i+"条消息");
         }
         return "success";
-    }
+    }*/
 }
