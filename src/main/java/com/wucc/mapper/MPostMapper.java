@@ -20,4 +20,6 @@ import org.apache.ibatis.annotations.Param;
 public interface MPostMapper extends BaseMapper<MPost> {
 
 	IPage<PostVo> selectPosts(Page page, @Param(Constants.WRAPPER) QueryWrapper wrapper);
+
+	PostVo selectOnePost(@Param(Constants.WRAPPER)QueryWrapper<MPost> wrapper);
 }

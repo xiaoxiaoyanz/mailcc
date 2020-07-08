@@ -125,13 +125,13 @@
                         <!-- <span class="layui-btn layui-btn-xs jie-admin" type="set" field="status" rank="0" style="background-color:#ccc;">取消加精</span> -->
                     </div>
                     <span class="fly-list-nums">
-            <a href="#comment"><i class="iconfont" title="回答">&#xe60c;</i> 66</a>
-            <i class="iconfont" title="人气">&#xe60b;</i> 99999
+            <a href="#comment"><i class="iconfont" title="回答">&#xe60c;</i> ${post.commentCount}</a>
+            <i class="iconfont" title="人气">&#xe60b;</i> ${post.viewCount}
           </span>
                 </div>
                 <div class="detail-about">
-                    <a class="fly-avatar" href="../user/home.html">
-                        <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">
+                    <a class="fly-avatar" href="/user/${post.authorId}">
+                        <img src="${post.authorAvatar}" alt="${post.authorName}">
                     </a>
                     <div class="fly-detail-user">
                         <a href="../user/home.html" class="fly-link">
